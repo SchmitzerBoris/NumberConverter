@@ -1,0 +1,12 @@
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\bin\Debug\net5.0\NumeralSystemOperations.deps.json
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\bin\Debug\net5.0\NumeralSystemOperations.dll
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\bin\Debug\net5.0\ref\NumeralSystemOperations.dll
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\bin\Debug\net5.0\NumeralSystemOperations.pdb
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\obj\Debug\net5.0\NumeralSystemOperations.csproj.AssemblyReference.cache
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\obj\Debug\net5.0\NumeralSystemOperations.GeneratedMSBuildEditorConfig.editorconfig
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\obj\Debug\net5.0\NumeralSystemOperations.AssemblyInfoInputs.cache
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\obj\Debug\net5.0\NumeralSystemOperations.AssemblyInfo.cs
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\obj\Debug\net5.0\NumeralSystemOperations.csproj.CoreCompileInputs.cache
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\obj\Debug\net5.0\NumeralSystemOperations.dll
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\obj\Debug\net5.0\ref\NumeralSystemOperations.dll
+E:\GradProg\semester1\BITS\app\NumberConverter\NumeralSystemOperations\obj\Debug\net5.0\NumeralSystemOperations.pdb

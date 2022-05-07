@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7fb13b12-ad76-4f9c-ac03-07d2f060eab0": {
+      "ProjectGuid": "7fb13b12-ad76-4f9c-ac03-07d2f060eab0",
+      "DisplayName": "NumberConverter.Wpf",
+      "ColorIndex": 0
+    },
+    "a0a106bd-495f-4438-9664-c96ef902d323": {
+      "ProjectGuid": "a0a106bd-495f-4438-9664-c96ef902d323",
+      "DisplayName": "NumeralSystemOperations",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}

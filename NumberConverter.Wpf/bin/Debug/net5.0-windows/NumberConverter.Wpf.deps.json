@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "NumberConverter.Wpf/1.0.0": {
+        "dependencies": {
+          "NumeralSystemOperations": "1.0.0"
+        },
+        "runtime": {
+          "NumberConverter.Wpf.dll": {}
+        }
+      },
+      "NumeralSystemOperations/1.0.0": {
+        "runtime": {
+          "NumeralSystemOperations.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NumberConverter.Wpf/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NumeralSystemOperations/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

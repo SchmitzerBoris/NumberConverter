@@ -1,0 +1,93 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0-windows7.0": {
+      "NumeralSystemOperations/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/NumeralSystemOperations.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/NumeralSystemOperations.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NumeralSystemOperations/1.0.0": {
+      "type": "project",
+      "path": "../NumeralSystemOperations/NumeralSystemOperations.csproj",
+      "msbuildProject": "../NumeralSystemOperations/NumeralSystemOperations.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0-windows7.0": [
+      "NumeralSystemOperations >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\Schmitzer Boris\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "E:\\GradProg\\semester1\\BITS\\app\\NumberConverter\\NumberConverter.Wpf\\NumberConverter.Wpf.csproj",
+      "projectName": "NumberConverter.Wpf",
+      "projectPath": "E:\\GradProg\\semester1\\BITS\\app\\NumberConverter\\NumberConverter.Wpf\\NumberConverter.Wpf.csproj",
+      "packagesPath": "C:\\Users\\Schmitzer Boris\\.nuget\\packages\\",
+      "outputPath": "E:\\GradProg\\semester1\\BITS\\app\\NumberConverter\\NumberConverter.Wpf\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\Schmitzer Boris\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0-windows7.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0-windows7.0": {
+          "targetAlias": "net5.0-windows",
+          "projectReferences": {
+            "E:\\GradProg\\semester1\\BITS\\app\\NumberConverter\\NumeralSystemOperations\\NumeralSystemOperations.csproj": {
+              "projectPath": "E:\\GradProg\\semester1\\BITS\\app\\NumberConverter\\NumeralSystemOperations\\NumeralSystemOperations.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0-windows7.0": {
+        "targetAlias": "net5.0-windows",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WPF": {
+            "privateAssets": "none"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.102\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
