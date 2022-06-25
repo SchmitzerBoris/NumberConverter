@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v5.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v5.0": {
+      "NumeralsTestConsole/1.0.0": {
+        "dependencies": {
+          "NumeralSystemOperations": "1.0.0"
+        },
+        "runtime": {
+          "NumeralsTestConsole.dll": {}
+        }
+      },
+      "NumeralSystemOperations/1.0.0": {
+        "runtime": {
+          "NumeralSystemOperations.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NumeralsTestConsole/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NumeralSystemOperations/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
