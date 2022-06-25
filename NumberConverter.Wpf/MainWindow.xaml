@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NumberConverter.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid x:Name="chkCustomBase">
         <Label Content="Om te zetten getal:" HorizontalAlignment="Left" Margin="84,221,0,0" VerticalAlignment="Top" Height="40" Width="149" FontSize="16"/>
-        <TextBox x:Name="txtToConvert" HorizontalAlignment="Left" Margin="83,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="33" FontSize="16"/>
+        <TextBox x:Name="txtToConvert" HorizontalAlignment="Left" Margin="83,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="137" FontSize="16"/>
         <Button x:Name="btnConvert" Content="Converteren" HorizontalAlignment="Left" Margin="316,252,0,0" VerticalAlignment="Top" Click="BtnConvert_Click" Height="50" Width="130" FontSize="18"/>
         <Label x:Name="lblResult" Content="Resultaat:" HorizontalAlignment="Left" Margin="530,222,0,0" VerticalAlignment="Top" Width="150" Height="39" FontSize="16"/>
         <Label Content="Huidig grondtal:" HorizontalAlignment="Left" Margin="244,49,0,0" VerticalAlignment="Top" Height="36" Width="132" FontSize="16"/>
@@ -18,7 +18,7 @@
         <TextBox x:Name="txtNewBase" HorizontalAlignment="Left" Margin="392,112,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="72" Height="25" FontSize="16"/>
         <ComboBox x:Name="cmbNewBase" HorizontalAlignment="Left" Margin="392,109,0,0" VerticalAlignment="Top" Width="72" Height="30" FontSize="16"/>
         <CheckBox x:Name="chkToggleCustomBase" Content="Vul zelf grondtal in" HorizontalAlignment="Left" Margin="596,33,0,0" VerticalAlignment="Top" Click="ChkToggleCustomBase_Click" Height="21" Width="167" FontSize="16"/>
-        <TextBox x:Name="txtResult" HorizontalAlignment="Left" Margin="530,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="33" FontSize="16"/>
+        <TextBox x:Name="txtResult" HorizontalAlignment="Left" Margin="530,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" Height="137" FontSize="16"/>
 
     </Grid>
 </Window>

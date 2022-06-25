@@ -27,6 +27,12 @@ namespace NumberConverter.Wpf
             InitializeBaseNumberSelection();
         }
         
+        private void InitialValues()
+        {
+            cmbBase.SelectedIndex = 4;
+            cmbNewBase.SelectedIndex = 1;
+        }
+
         private void InitializeBaseNumberSelection()
         {
             List<int> BaseNumberSelection = new List<int>() { 1, 2, 3, 8, 10, 16 };
@@ -113,6 +119,12 @@ namespace NumberConverter.Wpf
                 && int.TryParse(targetBaseStr, out targetBaseInput)
                 && currentBaseInput > 0
                 && targetBaseInput > 0;
+        }
+
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            InitialValues();
         }
 
         private void BtnConvert_Click(object sender, RoutedEventArgs e)

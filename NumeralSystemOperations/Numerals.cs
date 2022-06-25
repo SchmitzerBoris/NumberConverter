@@ -62,9 +62,7 @@ namespace NumeralSystemOperations
                 return numberToConvertDecimal.ToString();
             }
 
-            throw new NotImplementedException();
-
-            return TrimStrayZeroes(NumberFromInteger(5, targetBase));
+            return TrimStrayZeroes(NumberFromDecimal(numberToConvertDecimal, targetBase));
         }
 
         public static bool NumberMatchesBase(string numberToVerify, int baseToVerify)
@@ -100,7 +98,7 @@ namespace NumeralSystemOperations
             {
                 foreach (char c in numberToVerify)
                 {
-                    if (!(char.IsDigit(c) || (CharIsUpperCaseLetter(c) && IntValueFromAlphabeticDigit(c) < baseToVerify)))
+                    if (!(char.IsDigit(c) || (CharIsUpperCaseLetter(c) && IntValueFromAlphabeticDigit(c) < baseToVerify) || (c == '.')))
                     {
                         return false;
                     }
@@ -296,18 +294,45 @@ namespace NumeralSystemOperations
         private static string NumberFromDecimal(decimal decimalToConvert, int targetBase)
         {
             int wholePart = (int)Math.Truncate(decimalToConvert);
-            decimal fractionPart = decimalToConvert - Math.Truncate(decimalToConvert);
+            decimal fractionPart = decimalToConvert - (int)Math.Truncate(decimalToConvert);
 
             string wholePartConverted = NumberFromInteger(wholePart, targetBase);
 
-            string fractionPartConverted = ",";
+            if (fractionPart == 0) return wholePartConverted;
 
-            for (int pow = -1; pow >= -6; pow--)
+            string fractionPartConverted = ".";
+
+            decimal remainder = fractionPart;
+            
+            for (int pow = -1; pow >= -20; pow--)
             {
-                //int multiplier = fractionPart / Math.Pow(targetBase, pow) - fractionPart % Math.Pow(targetBase, pow);
+                decimal digitValue = 0;
+                decimal singleDigitValue = (decimal)Math.Pow(targetBase, pow);
+
+                if (singleDigitValue > remainder) 
+                {
+                    fractionPartConverted += 0;
+                    continue;
+                }
+
+                int multiplier = 0;
+
+                while ((remainder - singleDigitValue >= digitValue) && multiplier < targetBase - 1)
+                {
+                    digitValue += singleDigitValue;
+                    multiplier++;
+                }
+
+
+                fractionPartConverted += (multiplier > 9 ? AlphabeticDigitFromIntValue(multiplier) : multiplier.ToString());
+
+                remainder -= digitValue;
+                if (remainder == 0) break;
             }
 
-            throw new NotImplementedException();
+            if (remainder != 0) fractionPartConverted += "...";
+
+            return wholePartConverted + fractionPartConverted;
         }
 
         private static string SubstringDigitsOnOneSideOfComma(string number, bool afterComma = false)
