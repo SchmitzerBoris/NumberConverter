@@ -10,7 +10,12 @@
       "ProjectGuid": "a0a106bd-495f-4438-9664-c96ef902d323",
       "DisplayName": "NumeralSystemOperations",
       "ColorIndex": 1
+    },
+    "780cc495-2bd3-4a3e-a889-15037e7ab41a": {
+      "ProjectGuid": "780cc495-2bd3-4a3e-a889-15037e7ab41a",
+      "DisplayName": "NumeralsTestConsole",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }

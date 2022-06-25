@@ -13,11 +13,11 @@ namespace NumeralSystemOperations
 
         private const int MaxBase = 36;
         
-        private static ArgumentException BaseTooBigEx = new ArgumentException("Base number cannot exceed 36.");
+        private readonly static ArgumentException BaseTooBigEx = new ArgumentException("Base number cannot exceed 36.");
 
-        private static ArgumentException InvalidDigitsEx = new ArgumentException("Number must consist exclusively of numeric or alphabetic digits.");
+        private readonly static ArgumentException InvalidDigitsEx = new ArgumentException("Number must consist exclusively of numeric or alphabetic digits.");
 
-        private static ArgumentException MismatchEx = new ArgumentException("Number does not match given base.");
+        private readonly static ArgumentException MismatchEx = new ArgumentException("Number does not match given base.");
 
         #endregion
 
@@ -28,17 +28,10 @@ namespace NumeralSystemOperations
             {
                 throw BaseTooBigEx;
             }
-            
-            foreach(char ch in numberToConvert)
+
+            if (InputIsValidNumber(numberToConvert))
             {
-                if (!(
-                    char.IsDigit(ch)
-                    || CharIsLowerCaseLetter(ch)
-                    || CharIsUpperCaseLetter(ch)
-                    ))               
-                {
-                    throw InvalidDigitsEx;
-                }
+                throw InvalidDigitsEx;
             }
 
             numberToConvert = numberToConvert.ToUpper();
@@ -53,15 +46,15 @@ namespace NumeralSystemOperations
                 return numberToConvert;
             }
 
-            int numberToConvertDecimal;
+            decimal numberToConvertDecimal;
 
             if (currentBase == 10)
             {
-                numberToConvertDecimal = int.Parse(numberToConvert);
+                numberToConvertDecimal = decimal.Parse(numberToConvert);
             }
             else
             {
-                numberToConvertDecimal = IntegerFromNumber(numberToConvert, currentBase);
+                numberToConvertDecimal = DecimalFromNumber(numberToConvert, currentBase);
             }
 
             if (targetBase == 10)
@@ -69,13 +62,80 @@ namespace NumeralSystemOperations
                 return numberToConvertDecimal.ToString();
             }
 
-            return TrimStrayZeroes(NumberFromInteger(numberToConvertDecimal, targetBase));
+            throw new NotImplementedException();
+
+            return TrimStrayZeroes(NumberFromInteger(5, targetBase));
+        }
+
+        public static bool NumberMatchesBase(string numberToVerify, int baseToVerify)
+        {            
+            if (baseToVerify > MaxBase)
+            {
+                return false;
+            }
+
+            if (baseToVerify == 1)
+            {
+                foreach(char c in numberToVerify)
+                {
+                    if (c != '1')
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+
+            if (baseToVerify <= 10)
+            {
+                foreach(char c in numberToVerify)
+                {
+                    if (!CharIsDigitLowerThan(c, baseToVerify) && (c != '.'))
+                    {
+                        return false;
+                    }
+                }
+            }
+            else
+            {
+                foreach (char c in numberToVerify)
+                {
+                    if (!(char.IsDigit(c) || (CharIsUpperCaseLetter(c) && IntValueFromAlphabeticDigit(c) < baseToVerify)))
+                    {
+                        return false;
+                    }
+                }
+            }
+            
+            return true;
         }
 
         #endregion
 
         #region PRIVATE
                 
+        private static bool InputIsValidNumber(string inputToCheck)
+        {
+            bool containsComma = false;
+
+            foreach (char ch in inputToCheck)
+            {
+                
+                if (!(
+                    ch == '.' != containsComma
+                    && (char.IsDigit(ch)
+                    || CharIsLowerCaseLetter(ch)
+                    || CharIsUpperCaseLetter(ch)
+                    )))
+                {
+                    return false;
+                }
+                if (!containsComma) containsComma = ch == '.';
+            }
+            return true;
+
+        }
+
         private static int IntValueFromAlphabeticDigit(char alphabeticDigit)
         {
             return (byte)alphabeticDigit - 55;
@@ -104,49 +164,6 @@ namespace NumeralSystemOperations
         private static bool CharHasIndexInRange(char charToCheck, int minRange, int maxRange)
         {
             return (byte)charToCheck >= minRange && (byte)charToCheck <= maxRange;
-        }
-
-        private static bool NumberMatchesBase(string numberToVerify, int baseToVerify)
-        {            
-            if (baseToVerify > MaxBase)
-            {
-                return false;
-            }
-
-            if (baseToVerify == 1)
-            {
-                foreach(char c in numberToVerify)
-                {
-                    if (c != '1')
-                    {
-                        return false;
-                    }
-                }
-                return true;
-            }
-
-            if (baseToVerify <= 10)
-            {
-                foreach(char c in numberToVerify)
-                {
-                    if (!CharIsDigitLowerThan(c, baseToVerify))
-                    {
-                        return false;
-                    }
-                }
-            }
-            else
-            {
-                foreach (char c in numberToVerify)
-                {
-                    if (!(char.IsDigit(c) || (CharIsUpperCaseLetter(c) && IntValueFromAlphabeticDigit(c) < baseToVerify)))
-                    {
-                        return false;
-                    }
-                }
-            }
-            
-            return true;
         }
 
         private static string TrimStrayZeroes(string inputString)
@@ -251,16 +268,49 @@ namespace NumeralSystemOperations
             return result;
         }
 
-        private static float FloatFromNumber(string numberToConvert, int currentBase)
+        private static decimal DecimalFromNumber(string numberToConvert, int currentBase)
         {
-            string numberUnderOne = SubstringDigitsUntilComma(numberToConvert, true);
+            string fractionPart = SubstringDigitsOnOneSideOfComma(numberToConvert, true);
+            string wholePart = SubstringDigitsOnOneSideOfComma(numberToConvert, false);
+            
+            int wholePartConverted = IntegerFromNumber(wholePart, currentBase);
 
-            throw new NotImplementedException("Kommagetallen worden nog niet aanvaard...");
+            decimal fractionPartConverted = 0;
 
+            int pow = 0;
 
+            foreach (char digit in fractionPart)
+            {
+                pow -= 1;
+
+                int digitValue = CharIsUpperCaseLetter(digit) ? IntValueFromAlphabeticDigit(digit) : int.Parse(digit.ToString());
+
+                decimal value = digitValue * (decimal)Math.Pow(currentBase, pow);
+
+                fractionPartConverted += value;
+            }
+
+            return wholePartConverted + fractionPartConverted;
         }
 
-        private static string SubstringDigitsUntilComma(string number, bool afterComma = false)
+        private static string NumberFromDecimal(decimal decimalToConvert, int targetBase)
+        {
+            int wholePart = (int)Math.Truncate(decimalToConvert);
+            decimal fractionPart = decimalToConvert - Math.Truncate(decimalToConvert);
+
+            string wholePartConverted = NumberFromInteger(wholePart, targetBase);
+
+            string fractionPartConverted = ",";
+
+            for (int pow = -1; pow >= -6; pow--)
+            {
+                //int multiplier = fractionPart / Math.Pow(targetBase, pow) - fractionPart % Math.Pow(targetBase, pow);
+            }
+
+            throw new NotImplementedException();
+        }
+
+        private static string SubstringDigitsOnOneSideOfComma(string number, bool afterComma = false)
         {
             string result = string.Empty;
             
@@ -268,16 +318,16 @@ namespace NumeralSystemOperations
 
             foreach(char ch in number)
             {
-                if(ch == ',' || ch == '.')
+                if (ch == ',' || ch == '.')
                 {
                     commaIsLocated = true;
                 }
-                else if (commaIsLocated == afterComma)
+                else if (commaIsLocated == afterComma && ch != '-')
                 {
                     result += ch;
                 }
                 
-                if(commaIsLocated && !afterComma)
+                if (commaIsLocated && !afterComma)
                 {
                     break;
                 }
